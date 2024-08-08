@@ -24,7 +24,7 @@ export class ProductComponent implements OnInit{
              this.product = res;
            },
             error:(err)=>{
-          alert("no internet connection or something worng with API")
+          alert("no internet connection or something wrong with API")
         }
          })
       },
