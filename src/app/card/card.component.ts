@@ -11,4 +11,5 @@ import { RouterLink } from '@angular/router';
 })
 export class CardComponent {
   @Input() product!:IProduct;
+  forIcons:number[] = [1,2,3,4,5];
 }
