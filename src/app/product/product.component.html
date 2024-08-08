@@ -16,26 +16,12 @@
       </p>
       <div class="raiting flex justify-between items-center text-yellow-400">
         <div class="stars">
-          <i
-            class="fa-regular fa-star"
-            [class.fa-solid]="+product.rating.rate.toFixed() >= 1"
-          ></i>
-          <i
-            class="fa-regular fa-star"
-            [class.fa-solid]="+product.rating.rate.toFixed() >= 2"
-          ></i>
-          <i
-            class="fa-regular fa-star"
-            [class.fa-solid]="+product.rating.rate.toFixed() >= 3"
-          ></i>
-          <i
-            class="fa-regular fa-star"
-            [class.fa-solid]="+product.rating.rate.toFixed() >= 4"
-          ></i>
-          <i
-            class="fa-regular fa-star"
-            [class.fa-solid]="+product.rating.rate.toFixed() >= 5"
-          ></i>
+          @for (current of forIcons; track $index) {
+            <i
+              class="fa-regular fa-star"
+              [class.fa-solid]="+product.rating.rate.toFixed() >= current"
+            ></i>
+          }
         </div>
         <p class="font-bold bg-yellow-400 rounded-full p-2 text-white">
           {{ product.rating.rate }}
