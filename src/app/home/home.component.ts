@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit{
           this.products = res;
         },
         error:(err)=>{
-          window.alert("no internet connection or something worng with API")
+          window.alert("no internet connection or something wrong with API")
         }
       })
   }
