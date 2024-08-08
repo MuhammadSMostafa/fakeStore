@@ -1,1 +1,10 @@
-/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.scale {
+  @apply hover:scale-105 transition-transform duration-500;
+}
+.options{
+  @apply p-1 rounded cursor-pointer;
+}

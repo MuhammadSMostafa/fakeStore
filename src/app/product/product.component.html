@@ -1,0 +1,57 @@
+@defer (when product != null) {
+<div class="m-5">
+  <div
+    class="bg-white overflow-hidden rounded-lg gap-3 flex flex-col lg:flex-row p-5"
+  >
+    <div class="img w-96 lg:min-w-[350px] self-center">
+      <img [src]="product.image" class="w-full scale" [alt]="product.title" />
+    </div>
+    <div class="details flex flex-col justify-evenly gap-2">
+      <h3 class="text-xl font-bold self-center">
+        {{ product.title }}
+      </h3>
+      <p class="text-lg">{{ product.description }}</p>
+      <p class="bg-yellow-400 rounded-full p-2 self-center text-white w-fit">
+        {{ product.rating.count }} Customers Rate This Product
+      </p>
+      <div class="raiting flex justify-between text-yellow-400">
+        <div class="stars">
+          <i
+            class="fa-regular fa-star"
+            [class.fa-solid]="+product.rating.rate.toFixed() >= 1"
+          ></i>
+          <i
+            class="fa-regular fa-star"
+            [class.fa-solid]="+product.rating.rate.toFixed() >= 2"
+          ></i>
+          <i
+            class="fa-regular fa-star"
+            [class.fa-solid]="+product.rating.rate.toFixed() >= 3"
+          ></i>
+          <i
+            class="fa-regular fa-star"
+            [class.fa-solid]="+product.rating.rate.toFixed() >= 4"
+          ></i>
+          <i
+            class="fa-regular fa-star"
+            [class.fa-solid]="+product.rating.rate.toFixed() >= 5"
+          ></i>
+        </div>
+        <p class="font-bold bg-yellow-400 rounded-full p-2 text-white">
+          {{ product.rating.rate }}
+        </p>
+      </div>
+      <div class="flex justify-between items-center">
+        <p class="text-green-600 font-bold">{{ product.price }}$</p>
+        <button
+          class="p-2 bg-green-600 text-white rounded-md hover:scale-105 transition-transform duration-500"
+        >
+          Add to card
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+}@placeholder {
+<app-loading></app-loading>
+}

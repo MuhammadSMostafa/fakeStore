@@ -1,0 +1,49 @@
+<div
+  class="bg-white p-2 cursor-pointer rounded-lg gap-3 flex flex-col scale"
+  [attr.data-id]="product.id"
+  [routerLink]="['/product']"
+  [queryParams]="{ id: product.id }"
+>
+  <div class="img">
+    <img
+      [src]="product.image"
+      class="w-full object-contain h-[250px]"
+      [alt]="product.title"
+    />
+  </div>
+  <h3 class="text-ellipsis line-clamp-1 text-xl">{{ product.title }}</h3>
+  <p class="text-ellipsis line-clamp-2 text-gray-600">
+    {{ product.description }}
+  </p>
+  <div class="raiting flex justify-between text-yellow-400">
+    <div class="stars">
+      <i
+        class="fa-regular fa-star"
+        [class.fa-solid]="+product.rating.rate.toFixed() >= 1"
+      ></i>
+      <i
+        class="fa-regular fa-star"
+        [class.fa-solid]="+product.rating.rate.toFixed() >= 2"
+      ></i>
+      <i
+        class="fa-regular fa-star"
+        [class.fa-solid]="+product.rating.rate.toFixed() >= 3"
+      ></i>
+      <i
+        class="fa-regular fa-star"
+        [class.fa-solid]="+product.rating.rate.toFixed() >= 4"
+      ></i>
+      <i
+        class="fa-regular fa-star"
+        [class.fa-solid]="+product.rating.rate.toFixed() >= 5"
+      ></i>
+    </div>
+    <p>{{ product.rating.rate }}</p>
+  </div>
+  <div class="flex justify-between items-center">
+    <p class="text-green-600 font-bold">{{ product.price }}$</p>
+    <button class="p-2 bg-green-600 text-white rounded-md scale">
+      Add to card
+    </button>
+  </div>
+</div>
