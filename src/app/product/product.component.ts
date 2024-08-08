@@ -15,6 +15,7 @@ import { NotFoundComponent } from "../not-found/not-found.component";
 })
 export class ProductComponent implements OnInit{
   product!:IProduct;
+  forIcons:number[] = [1,2,3,4,5];
   constructor(private _ActivatedRoute:ActivatedRoute, private _ProductsService:ProductsService){}
   ngOnInit(): void {
        this._ActivatedRoute.queryParamMap.subscribe({
@@ -24,7 +25,7 @@ export class ProductComponent implements OnInit{
              this.product = res;
            },
             error:(err)=>{
-          alert("no internet connection or something wrong with API")
+          alert("no internet connection or something worng with API")
         }
          })
       },
