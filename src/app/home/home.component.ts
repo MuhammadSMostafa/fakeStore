@@ -12,9 +12,8 @@ import { Component, ElementRef, OnInit} from '@angular/core';
 })
 export class HomeComponent implements OnInit{
   products!:IProduct[];
-  category:string = "";
-  mens:string = "men's clothing";
-  women:string = "women's clothing";
+  categorySelected:string | undefined = "all";
+  categories:string[] = ["all","electronics","jewelery","men's clothing","women's clothing"]
   constructor(private _ProductsService:ProductsService){
 
   }
@@ -24,11 +23,11 @@ export class HomeComponent implements OnInit{
           this.products = res;
         },
         error:(err)=>{
-          window.alert("no internet connection or something wrong with API")
+          window.alert("no internet connection or something worng with API")
         }
       })
   }
-  showCategory(target:any):void{
-    this.category = target.dataset.category;
+  showCategory(element:HTMLParagraphElement):void{
+    this.categorySelected = element.dataset['category'];
   }
 }
