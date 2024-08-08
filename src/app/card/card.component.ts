@@ -11,7 +11,4 @@ import { RouterLink } from '@angular/router';
 })
 export class CardComponent {
   @Input() product!:IProduct;
-  navigateToProduct(product:IProduct):void{
-
-  }
 }
