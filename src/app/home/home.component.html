@@ -1,54 +1,25 @@
 <section class="p-10">
   <div class="flex justify-center">
     <div class="options flex gap-2 items-center flex-wrap mb-10 text-white">
+      @for (category of categories; track $index) {
       <p
-        data-category=""
+        [attr.data-category]="category"
         class="options"
-        (click)="showCategory($event.currentTarget)"
-        [class.active]="category == ''"
+        (click)="showCategory(current)"
+        [class.active]="categorySelected == category"
+        #current
       >
-        ALL
+        {{ category.toUpperCase() }}
       </p>
-      <p
-        data-category="electronics"
-        class="options"
-        (click)="showCategory($event.currentTarget)"
-        [class.active]="category == 'electronics'"
-      >
-        ELECTRONICS
-      </p>
-      <p
-        data-category="jewelery"
-        class="options"
-        (click)="showCategory($event.currentTarget)"
-        [class.active]="category == 'jewelery'"
-      >
-        JEWELERY
-      </p>
-      <p
-        data-category="men's clothing"
-        class="options"
-        (click)="showCategory($event.currentTarget)"
-        [class.active]="category == mens"
-      >
-        MEN'S CLOTHING
-      </p>
-      <p
-        data-category="women's clothing"
-        class="options"
-        (click)="showCategory($event.currentTarget)"
-        [class.active]="category == women"
-      >
-        WOMEN'S CLOTHING
-      </p>
+      }
     </div>
   </div>
   <div
     class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5"
   >
-    @for (product of products; track $index) { @if(category == ""){
+    @for (product of products; track $index) { @if(categorySelected == "all"){
     <app-card [product]="product"></app-card>
-    } @else if (product.category == category) {
+    } @else if (product.category == categorySelected) {
     <app-card [product]="product"></app-card>
     } }
   </div>
