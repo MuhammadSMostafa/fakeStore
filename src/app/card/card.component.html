@@ -1,15 +1,35 @@
-import { Component, Input } from '@angular/core';
-import { IProduct } from '../iproduct';
-import { RouterLink } from '@angular/router';
-
-@Component({
-  selector: 'app-card',
-  standalone: true,
-  imports: [RouterLink],
-  templateUrl: './card.component.html',
-  styleUrl: './card.component.css'
-})
-export class CardComponent {
-  @Input() product!:IProduct;
-  forIcons:number[] = [1,2,3,4,5];
-}
+<div
+  class="bg-white p-2 cursor-pointer rounded-lg gap-3 flex flex-col scale"
+  [attr.data-id]="product.id"
+  [routerLink]="['/product']"
+  [queryParams]="{ id: product.id }"
+>
+  <div class="img">
+    <img
+      [src]="product.image"
+      class="w-full object-contain h-[250px]"
+      [alt]="product.title"
+    />
+  </div>
+  <h3 class="text-ellipsis line-clamp-1 text-xl">{{ product.title }}</h3>
+  <p class="text-ellipsis line-clamp-2 text-gray-600">
+    {{ product.description }}
+  </p>
+  <div class="raiting flex justify-between text-yellow-400">
+    <div class="stars">
+      @for (current of forIcons; track $index) {
+      <i
+        class="fa-regular fa-star"
+        [class.fa-solid]="+product.rating.rate.toFixed() >= current"
+      ></i>
+      }
+    </div>
+    <p>{{ product.rating.rate }}</p>
+  </div>
+  <div class="flex justify-between items-center">
+    <p class="text-green-600 font-bold">{{ product.price }}$</p>
+    <button class="p-2 bg-green-600 text-white rounded-md scale">
+      Add to card
+    </button>
+  </div>
+</div>
