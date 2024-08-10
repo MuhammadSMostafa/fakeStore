@@ -1,7 +1,7 @@
 .loading{
   display: grid;
   place-content: center;
-  height: calc(100vh - 44px);
+  height: calc(100vh - 90px);
 }
 .loader {
       width: 48px;
