@@ -1,8 +1,7 @@
 import { ProductsService } from './../products.service';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router} from '@angular/router';
 import { IProduct } from '../iproduct';
-import { CardComponent } from "../card/card.component";
 import { LoadingComponent } from "../loading/loading.component";
 import { NotFoundComponent } from "../not-found/not-found.component";
 
@@ -16,7 +15,7 @@ import { NotFoundComponent } from "../not-found/not-found.component";
 export class ProductComponent implements OnInit{
   product!:IProduct;
   forIcons:number[] = [1,2,3,4,5];
-  constructor(private _ActivatedRoute:ActivatedRoute, private _ProductsService:ProductsService){}
+  constructor(private _ActivatedRoute:ActivatedRoute, private _ProductsService:ProductsService, private _Router:Router){}
   ngOnInit(): void {
        this._ActivatedRoute.queryParamMap.subscribe({
       next: (res)=>{
@@ -26,7 +25,12 @@ export class ProductComponent implements OnInit{
            },
             error:(err)=>{
           alert("no internet connection or something worng with API")
-        }
+        },
+        complete: ()=>{
+          if(!this.product){
+            this._Router.navigate(['notFound']);
+          }
+          }
          })
       },
     })
